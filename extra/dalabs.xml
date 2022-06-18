@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<repositories version="1.0">
+	<repo priority="50" quality="experimental" status="unofficial">
+		<name>dalabs</name>
+		<description>All the weird stuff and newer versions that are nowhere else.</description>
+		<homepage>https://github.com/chrschmidt/dalabs-overlay</homepage>
+		<owner>
+			<email>gentoo@digadd.de</email>
+		</owner>
+		<source type="git">https://github.com/chrschmidt/dalabs-overlay.git</source>
+	</repo>
+</repositories>
