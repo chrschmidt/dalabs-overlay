@@ -8,7 +8,7 @@ USE_RUBY="ruby30 ruby31 ruby32"
 RUBY_FAKEGEM_GEMSPEC="rugged.gemspec"
 
 RUBY_FAKEGEM_EXTENSIONS=(ext/rugged/extconf.rb)
-RUBY_FAKEGM_EXTENSION_OPTIONS="--use-system-libraries"
+RUBY_FAKEGEM_EXTENSION_OPTIONS="--use-system-libraries"
 
 inherit ruby-fakegem
 
@@ -19,13 +19,22 @@ SRC_URI="https://github.com/libgit2/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="ssh"
 
 RDEPEND="
         >=dev-libs/libgit2-1.6
+        ssh? ( net-libs/libssh2 )
         "
 
-# dependency on virtual/pkgconfig is explicitly in ruby-fakegem.eclass
-BDEPEND+=" dev-util/cmake"
+# dependency on virtual/pkgconfig is implicitly via ruby-fakegem.eclass
+BDEPEND+="dev-util/cmake"
+
+src_configure() {
+        if use ssh ; then
+                RUBY_FAKEGEM_EXTENSION_OPTIONS+=" --with-ssh"
+        fi
+        ruby-ng_src_configure
+}
 
 src_unpack() {
         local INCDIR="${WORKDIR}/all/${P}/vendor/libgit2/include/git2"
