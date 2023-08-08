@@ -22,7 +22,7 @@ KEYWORDS="~amd64"
 IUSE="ssh"
 
 RDEPEND="
-        >=dev-libs/libgit2-1.6
+        =dev-libs/libgit2-1.6*
         ssh? ( net-libs/libssh2 )
         "
 
