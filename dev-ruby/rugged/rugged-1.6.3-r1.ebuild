@@ -27,7 +27,7 @@ RDEPEND="
         "
 
 # dependency on virtual/pkgconfig is implicitly via ruby-fakegem.eclass
-BDEPEND+="dev-util/cmake"
+BDEPEND+="dev-build/cmake"
 
 src_configure() {
         if use ssh ; then
