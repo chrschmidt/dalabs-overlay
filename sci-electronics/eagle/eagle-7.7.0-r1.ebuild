@@ -94,7 +94,6 @@ src_install() {
 		done
 	else
 		rm {elektro-tutorial,manual_*,tutorial_*,layer-setup_designrules}.pdf
-		rm -rf ulp/
 	fi
 
 	rm -f license*.txt eagle.dtd
